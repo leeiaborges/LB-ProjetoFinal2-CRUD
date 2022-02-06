@@ -14,37 +14,26 @@ import br.com.rd.model.User;
 
 
 
-/**
- * Servlet implementation class CRUDController
- */
 @WebServlet("/CRUDController")
 public class CRUDController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO cont;
-	//private Integer teste = 0;
+
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public CRUDController() {
     	super();
-        // TODO Auto-generated constructor stub
+ 
         this.cont = new UserDAO();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String option = request.getParameter("option");
@@ -84,7 +73,6 @@ public class CRUDController extends HttpServlet {
 	}
 	
 	private void insertUser(HttpServletRequest tomate, HttpServletResponse alface) throws ServletException, IOException{
-		//String nomeBack = tomate.getParameter("nome"); // ERRO
 		String nomeBack = tomate.getParameter("name");
 		String emailBack = tomate.getParameter("email");
 		String paisBack = tomate.getParameter("pais");
@@ -98,7 +86,6 @@ public class CRUDController extends HttpServlet {
 	}
 	
 	private void selectAllUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		//System.out.println(this.cont.selectAll());
 		request.setAttribute("listUser", this.cont.selectAll());
 		request.getRequestDispatcher("listTable.jsp").forward(request, response);
 	}
